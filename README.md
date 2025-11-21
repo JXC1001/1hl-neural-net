@@ -1,2 +1,69 @@
-# 1hl-neural-net
-1-hidden-layer neural net for curve fitting made from scratch in Python. Contains 3N+1 trainable parameters (N = number of neurons).
+# Neural Network With One Hidden Layer (Python)
+
+## Overview
+This project implements a neural-network gradient-descent algorithm using a leaky ReLU activation function.
+
+Given data points \((x, y)\) on a user-defined domain, the program attempts to learn the parameters of the model:
+
+$$
+p(x) = \left( 
+\sum_{j=1}^{Neurons} 
+w_{o_j} \cdot 
+\max\!\left(\alpha(w_{h_j}x + b_{h_j}),\; w_{h_j}x + b_{h_j}\right)
+\right) + b_o
+$$
+
+The `NeuralNet` class is implemented entirely in pure Python (no external dependencies; only Python's built-in modules).
+
+---
+
+## Details
+- Random parameter initialization.
+- Domain normalization to \([-1, 1]\) for stability.
+- Mean squared error loss.
+- Manual gradient computation and gradient-descent updates.
+  - Reusable partial derivatives for each neuron.
+- Simple command-line interface for:
+  - number of neurons  
+  - domain values  
+  - y-values  
+  - learning rate  
+  - ReLU leakiness  
+  - iterations  
+- `main.py` uses NumPy and matplotlib to create graphs.  
+  (**Not required** to use the `NeuralNet` class, only to visualize the model's outputs.)
+
+---
+
+## Limitations & Notes
+- Built as an upgrade from the polynomial curve-fitting project.
+- More expressive and customizable than a polynomial model.
+- Convergence depends on:
+  - initialization  
+  - learning rate  
+  - α (ReLU leakiness)  
+  - number of neurons
+  - domain length  
+- Large neuron counts significantly increase runtime because all computations are done in pure Python.
+- Not optimized for production:
+  - no Adam  
+  - no batching  
+  - no vectorization  
+  - no regularization  
+- Results vary between runs due to random initialization.
+
+---
+
+## Usage
+
+To run the neural network trainer:
+
+```bash
+python src/ONE_HL_NN.py
+```
+
+To run the visualization script (requires NumPy + matplotlib):
+
+```bash
+python src/main.py
+```

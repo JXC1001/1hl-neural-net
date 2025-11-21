@@ -6,23 +6,26 @@ This project implements a neural-network gradient-descent algorithm using a leak
 Given data points \((x, y)\) on a user-defined domain, the program attempts to learn the parameters of the model:
 
 $$
-p(x) = \left( 
-\sum_{j=1}^{Neurons} 
+p(x) = \left(
+\sum_{j=1}^{N}
 w_{o_j} \cdot 
-\max\!\left(\alpha(w_{h_j}x + b_{h_j}),\; w_{h_j}x + b_{h_j}\right)
+\max(\alpha(w_{h_j}x + b_{h_j}),\ w_{h_j}x + b_{h_j})
 \right) + b_o
 $$
+
+(Where N = the neuron count)
 
 The `NeuralNet` class is implemented entirely in pure Python (no external dependencies; only Python's built-in modules).
 
 ---
 
 ## Details
-- Random parameter initialization.
-- Domain normalization to \([-1, 1]\) for stability.
+- 3N + 1 trainable parameters where N = neuron count
+  - Random parameter initialization.
+- Domain normalization to \([-1, 1]\) for numerical stability.
 - Mean squared error loss.
 - Manual gradient computation and gradient-descent updates.
-  - Reusable partial derivatives for each neuron.
+  - Reusable partial derivatives for each neuron: no neuron limit.
 - Simple command-line interface for:
   - number of neurons  
   - domain values  

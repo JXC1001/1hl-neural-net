@@ -40,12 +40,13 @@ The `NeuralNet` class is implemented entirely in pure Python (no external depend
 
 ## Limitations & Notes
 - Built as an upgrade from the polynomial curve-fitting project.
-- More expressive and customizable than a polynomial model.
+- Can fit more functions and is more customizable than my older polynomial model.
 - Convergence depends on:
   - initialization  
   - learning rate  
   - α (ReLU leakiness)  
   - number of neurons
+    - The more complex the function is, the more neurons needed, thus more computations.
   - domain length  
 - Large neuron counts significantly increase runtime because all computations are done in pure Python.
 - Not optimized for production:
